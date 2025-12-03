@@ -1,0 +1,34 @@
+name: Code Quality
+run-name: ${{ github.actor }} is checking Code Quality 🔎
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps: #replicar lo que hago en la terminal, buscar "uv github actions"
+      - uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the Project
+        run: uv sync --all-extras --dev
+        shell: bash
+
+      - name: Run Unit Tests
+        run: uv run pytest
+        shell: bash
+
+
+#montar el resto de jobs según los pasos que hay en el README
+
+
+
+
