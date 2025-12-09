@@ -2,6 +2,8 @@ name: Deployment
 run-name: ${{ github.actor }} is running Deployment  🚀
 on:
   push:
+    branches:
+      - main
 
 jobs:
 
