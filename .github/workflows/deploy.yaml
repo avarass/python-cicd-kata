@@ -2,10 +2,11 @@ name: Deployment
 run-name: ${{ github.actor }} is running Deployment  🚀
 on:
   push:
-    branches:
-      - dice-plus-1
 
 jobs:
+  code-safety:
+    name: Code Safety Checks 🛡️
+    uses: ./.github/workflows/code-quality.yaml
 
   push-to-registry:
     needs: [unit-tests, check-type-safety, check-formatter, check-linter ]
